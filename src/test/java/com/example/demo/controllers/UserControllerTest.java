@@ -66,19 +66,20 @@ public class UserControllerTest {
         assertEquals("thisIsHashed", u.getPassword());
 
         // Testing user lookup by Id
+        when(userRepository.findById(u.getId())).thenReturn(Optional.of(u));
         final ResponseEntity<User> response2 = userController.findById(u.getId());
         User userFound = response2.getBody();
         assertEquals(200, response2.getStatusCodeValue());
+        assertEquals(0, userFound.getId());
+        assertEquals("Test", userFound.getUsername());
+        assertEquals("thisIsHashed", userFound.getPassword());
     }
 
     @Test
     public void verifyFindByUsername() throws Exception {
         // Creating User
         when(encoder.encode("testPassword")).thenReturn("thisIsHashed");
-        CreateUserRequest r = new CreateUserRequest();
-        r.setUsername("Test");
-        r.setPassword("testPassword");
-        r.setConfirmPassword("testPassword");
+        CreateUserRequest r = createUserRequest("Test", "testPassword", "testPassword");
 
         final ResponseEntity<User> response = userController.createUser(r);
 
@@ -91,16 +92,26 @@ public class UserControllerTest {
         assertEquals("Test", u.getUsername());
         assertEquals("thisIsHashed", u.getPassword());
 
-        // Looking up User by Username
-        final ResponseEntity<User> userFound = userController.findByUserName(u.getUsername());
-        assertNotNull(userFound);
+        // Testing user lookup by Username
+        when(userRepository.findByUsername(u.getUsername())).thenReturn(u);
+        final ResponseEntity<User> response2 = userController.findByUserName(u.getUsername());
+        User userFound = response2.getBody();
+        assertEquals(200, response2.getStatusCodeValue());
+        assertEquals(0, userFound.getId());
+        assertEquals("Test", userFound.getUsername());
+        assertEquals("thisIsHashed", userFound.getPassword());
+    }
 
-        User u2 = userFound.getBody();
-        if(u2 != null) {
-            assertEquals(0, u.getId());
-            assertEquals("Test", u.getUsername());
-            assertEquals("thisIsHashed", u.getPassword());
-        }
+    @Test
+    public void verifyFindByIdNotFound() {
+        final ResponseEntity<User> response = userController.findByUserName("Joan");
+        assertEquals(404, response.getStatusCodeValue());
+    }
+
+    @Test
+    public void verifyFindByUsernameNotFound() {
+        final ResponseEntity<User> response = userController.findById(1L);
+        assertEquals(404, response.getStatusCodeValue());
     }
 
     /**
