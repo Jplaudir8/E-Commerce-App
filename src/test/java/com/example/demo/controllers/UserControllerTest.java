@@ -34,10 +34,7 @@ public class UserControllerTest {
     @Test
     public void create_user_happy_path() throws Exception {
         when(encoder.encode("testPassword")).thenReturn("thisIsHashed");
-        CreateUserRequest r = new CreateUserRequest();
-        r.setUsername("Test");
-        r.setPassword("testPassword");
-        r.setConfirmPassword("testPassword");
+        CreateUserRequest r = createUserRequest("Test", "testPassword", "testPassword");
 
         final ResponseEntity<User> response = userController.createUser(r);
 
@@ -55,10 +52,7 @@ public class UserControllerTest {
     public void verifyFindById() throws Exception {
         // Creating User
         when(encoder.encode("testPassword")).thenReturn("thisIsHashed");
-        CreateUserRequest r = new CreateUserRequest();
-        r.setUsername("Test");
-        r.setPassword("testPassword");
-        r.setConfirmPassword("testPassword");
+        CreateUserRequest r = createUserRequest("Test", "testPassword", "testPassword");
 
         final ResponseEntity<User> response = userController.createUser(r);
 
@@ -71,17 +65,10 @@ public class UserControllerTest {
         assertEquals("Test", u.getUsername());
         assertEquals("thisIsHashed", u.getPassword());
 
-        // Looking up User by Id
-        final ResponseEntity<User> userFound = userController.findById(u.getId());
-        assertNotNull(userFound);
-
-        User u2 = userFound.getBody();
-
-        if(u2 != null) {
-            assertEquals(1L, u2.getId());
-            assertEquals("Test", u2.getUsername());
-            assertEquals("thisIsHashed", u2.getPassword());
-        }
+        // Testing user lookup by Id
+        final ResponseEntity<User> response2 = userController.findById(u.getId());
+        User userFound = response2.getBody();
+        assertEquals(200, response2.getStatusCodeValue());
     }
 
     @Test
@@ -114,6 +101,21 @@ public class UserControllerTest {
             assertEquals("Test", u.getUsername());
             assertEquals("thisIsHashed", u.getPassword());
         }
+    }
+
+    /**
+     * Helper Method to create a UserRequest instance.
+     * @param username
+     * @param password
+     * @param confirmPassword
+     * @return
+     */
+    public CreateUserRequest createUserRequest(String username, String password, String confirmPassword) {
+        CreateUserRequest userRequest = new CreateUserRequest();
+        userRequest.setUsername(username);
+        userRequest.setPassword(password);
+        userRequest.setConfirmPassword(confirmPassword);
+        return userRequest;
     }
 
 }
