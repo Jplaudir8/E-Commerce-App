@@ -119,7 +119,7 @@ public class UserControllerTest {
      * @param username
      * @param password
      * @param confirmPassword
-     * @return
+     * @return  CreateUserRequest object
      */
     public CreateUserRequest createUserRequest(String username, String password, String confirmPassword) {
         CreateUserRequest userRequest = new CreateUserRequest();
