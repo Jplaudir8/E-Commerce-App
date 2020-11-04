@@ -99,6 +99,14 @@ public class CartControllerTest {
         return cartRequest;
     }
 
+    /**
+     * Helper mthod to create a User instance
+     * @param userId
+     * @param username
+     * @param password
+     * @param cart
+     * @return  User object
+     */
     public User createUser(long userId, String username, String password, Cart cart) {
         User newUser = new User();
         newUser.setId(userId);
@@ -108,6 +116,14 @@ public class CartControllerTest {
         return newUser;
     }
 
+    /**
+     * Helper method to create an Item instance
+     * @param id
+     * @param name
+     * @param price
+     * @param description
+     * @return  Item object.
+     */
     public Item createItem(Long id, String name, BigDecimal price, String description) {
         Item newItem = new Item();
         newItem.setId(id);
@@ -117,6 +133,13 @@ public class CartControllerTest {
         return newItem;
     }
 
+    /**
+     * Helper method to create a Cart instance.
+     * @param cartId
+     * @param items
+     * @param user
+     * @return  Cart object
+     */
     public Cart createCart(long cartId, ArrayList<Item> items, User user) {
         Cart newCart = new Cart();
         newCart.setId(cartId);
