@@ -60,7 +60,25 @@ public class OrderControllerTest {
 
     @Test
     public void verifyGetOrdersForUser() {
-        
+        Item item = createItem(1L, "Fidget Spinner", BigDecimal.valueOf(5), "Metal Toy");
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(item);
+        Cart cart = createCart(1L, new ArrayList<>(), null);
+        User user = createUser(1L, "Joan", "Password", null);
+        cart.setUser(user);
+        cart.setItems(items);
+        user.setCart(cart);
+
+        orderController.submit("Joan");
+        when(userRepository.findByUsername("Joan")).thenReturn(user);
+
+        final ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("Joan");
+
+        assertNotNull(response);
+        assertEquals(200, response.getStatusCodeValue());
+
+        List<UserOrder> orders = response.getBody();
+        assertNotNull(orders);
     }
 
     /**
