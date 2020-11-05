@@ -38,26 +38,29 @@ public class OrderControllerTest {
 
     @Test
     public void verifySubmit() {
-        User user = createUser(1L, "Joan", "Password", new Cart());
-        Item item = createItem(1L, "Fidget Spinner", new BigDecimal("5"), "Metal Toy");
-        ArrayList<Item> items = new ArrayList<Item>();
+        Item item = createItem(1L, "Fidget Spinner", BigDecimal.valueOf(5), "Metal Toy");
+        ArrayList<Item> items = new ArrayList<>();
         items.add(item);
-        Cart cart = createCart(1l, items, user);
-        user.setCart(cart);
+        Cart cart = createCart(1L, items, null);
+        User user = createUser(1L, "Joan", "Password", cart);
+        cart.setUser(user);
 
         when(userRepository.findByUsername("Joan")).thenReturn(user);
 
-        ResponseEntity<UserOrder> response = orderController.submit("Joan");
+        final ResponseEntity<UserOrder> response = orderController.submit("Joan");
 
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
 
-        // more assertions soon.
+        UserOrder order = response.getBody();
+        assertEquals(user, order.getUser());
+        assertEquals(items, order.getItems());
+        assertEquals(BigDecimal.valueOf(5), order.getTotal());
     }
 
     @Test
     public void verifyGetOrdersForUser() {
-
+        
     }
 
     /**
@@ -106,6 +109,7 @@ public class OrderControllerTest {
         newCart.setId(cartId);
         newCart.setItems(items);
         newCart.setUser(user);
+        newCart.setTotal(BigDecimal.valueOf(5));
         return newCart;
     }
 }
