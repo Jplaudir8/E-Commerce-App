@@ -23,7 +23,7 @@ import com.example.demo.model.requests.CreateUserRequest;
 @RequestMapping("/api/user")
 public class UserController {
 
-	private static Logger log = Logger.getLogger(UserDetailsServiceImpl.class.getName());
+	private static Logger log = Logger.getLogger(UserController.class.getName());
 
 	@Autowired
 	private UserRepository userRepository;

@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ import com.example.demo.model.requests.ModifyCartRequest;
 @RestController
 @RequestMapping("/api/cart")
 public class CartController {
-	
+
+	private static Logger log = Logger.getLogger(UserController.class.getName());
+
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -40,6 +43,7 @@ public class CartController {
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
+			log.severe("Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
@@ -57,6 +61,7 @@ public class CartController {
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
+			log.severe("Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();

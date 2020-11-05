@@ -64,7 +64,7 @@ public class OrderControllerTest {
     }
 
     /**
-     * Helper mthod to create a User instance
+     * Helper method to create a User instance
      * @param userId
      * @param username
      * @param password
