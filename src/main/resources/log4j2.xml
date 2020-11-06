@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="example" packages="">
+    <Appenders>
+        <Socket name="socket" host="prd-p-y35zv.splunkcloud.com" port="8088">
+            <PatternLayout pattern="%p: %m%n" charset="UTF-8"/>
+        </Socket>
+        <SplunkHttp
+                name="cloud"
+                url=""
+                token=""
+                index="main"
+                source="cartapp"
+                sourcetype="json"
+                disableCertificateValidation="true"
+        >
+            <PatternLayout pattern="%m"/>
+        </SplunkHttp>
+        <SplunkHttp
+                name="local"
+                url=""
+                token=""
+                index="main"
+                source="cartapp"
+                sourcetype="json"
+                disableCertificateValidation="true"
+        >
+            <PatternLayout pattern="%m"/>
+        </SplunkHttp>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO"/>
+        <Logger name="splunk.logger" level="info">
+            <AppenderRef ref="socket"/>
+        </Logger>
+        <Logger name="main_logger" level="info">
+            <AppenderRef ref="cloud"/>
+            <AppenderRef ref="local"/>
+        </Logger>
+    </Loggers>
+</Configuration>

@@ -1,8 +1,8 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.security.UserDetailsServiceImpl;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +23,7 @@ import com.example.demo.model.requests.CreateUserRequest;
 @RequestMapping("/api/user")
 public class UserController {
 
-	private static Logger log = Logger.getLogger(UserController.class.getName());
+	private static Logger log = LoggerFactory.getLogger("splunk_logger");
 
 	@Autowired
 	private UserRepository userRepository;
@@ -42,6 +42,13 @@ public class UserController {
 	@GetMapping("/{username}")
 	public ResponseEntity<User> findByUserName(@PathVariable String username) {
 		User user = userRepository.findByUsername(username);
+
+		if (user == null) {
+			log.info("User Controller: User does not exist");
+		} else {
+			log.info("User Controller: Found User with username: " + username);
+		}
+
 		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 	}
 	
@@ -49,15 +56,16 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
-		log.info("User name set with " + createUserRequest.getUsername());
+
 		Cart cart = new Cart();
 		cartRepository.save(cart);
 		user.setCart(cart);
-		if(createUserRequest.getPassword().length() < 7 ||
-				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
-			log.severe("Error with user password. Cannot create user {}");
+		if (createUserRequest.getPassword().length() < 7 ||
+				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
+			log.info("User Controller: Error with user password. Cannot create user {}");
 			return ResponseEntity.badRequest().build();
 		}
+		log.info("User Controller: User name set with " + createUserRequest.getUsername());
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 
 		userRepository.save(user);

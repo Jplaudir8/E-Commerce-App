@@ -1,7 +1,8 @@
 package com.example.demo.controllers;
 
 import java.util.Optional;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import com.example.demo.model.requests.ModifyCartRequest;
 @RequestMapping("/api/cart")
 public class CartController {
 
-	private static Logger log = Logger.getLogger(UserController.class.getName());
+	private static Logger log = LoggerFactory.getLogger("splunk_logger");
 
 	@Autowired
 	private UserRepository userRepository;
@@ -39,11 +40,12 @@ public class CartController {
 	public ResponseEntity<Cart> addToCart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
+			log.info("Cart Controller: User does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.severe("Item with id ["+ request.getItemId() + "] does not exist");
+			log.info("Cart Controller: Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
@@ -57,11 +59,12 @@ public class CartController {
 	public ResponseEntity<Cart> removeFromCart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
+			log.info("Cart Controller: User does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.severe("Item with id ["+ request.getItemId() + "] does not exist");
+			log.info("Cart Controller: Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();

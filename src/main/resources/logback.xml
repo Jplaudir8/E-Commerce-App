@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <Appender name="splunkAppender" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <url></url>
+        <token></token>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%msg</pattern>
+        </layout>
+    </Appender>
+    <logger name ="splunk_logger" level="debug">
+        <appender-ref ref="splunkAppender" />
+    </logger>
+</configuration>
