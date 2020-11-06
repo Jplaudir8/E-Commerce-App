@@ -103,6 +103,20 @@ public class UserControllerTest {
     }
 
     @Test
+    public void verifyUserNotCreated() {
+        when(encoder.encode("testPassword")).thenReturn("thisIsHashed");
+        CreateUserRequest r = createUserRequest("Test", "1234", "1234");
+
+        final ResponseEntity<User> response = userController.createUser(r);
+
+        assertNotNull(response);
+        assertEquals(400, response.getStatusCodeValue());
+
+        User u = response.getBody();
+        assertNull(u);
+    }
+
+    @Test
     public void verifyFindByIdNotFound() {
         final ResponseEntity<User> response = userController.findByUserName("Joan");
         assertEquals(404, response.getStatusCodeValue());
@@ -113,6 +127,8 @@ public class UserControllerTest {
         final ResponseEntity<User> response = userController.findById(1L);
         assertEquals(404, response.getStatusCodeValue());
     }
+
+
 
     /**
      * Helper Method to create a UserRequest instance.
