@@ -29,7 +29,7 @@ public class ItemControllerTest {
     }
 
     @Test
-    public void verifyGetItems() throws Exception {
+    public void verifyGetItems() {
         final ResponseEntity<List<Item>> response = itemController.getItems();
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
@@ -38,7 +38,7 @@ public class ItemControllerTest {
     }
 
     @Test
-    public void verifyGetItemById() throws Exception {
+    public void verifyGetItemById() {
         Item newItem = createItem(1L, "Fidget Spinner", "Toy", new BigDecimal("5"));
         when(itemRepository.findById(newItem.getId())).thenReturn(Optional.of(newItem));
 
@@ -56,7 +56,7 @@ public class ItemControllerTest {
     }
 
     @Test
-    public void verifyGetItemsByName() throws Exception {
+    public void verifyGetItemsByName() {
         Item newItem1 = createItem(1L, "Fidget Spinner", "Metal Toy", new BigDecimal("5"));
         Item newItem2 = createItem(1L, "Fidget Spinner", "Plastic Toy", new BigDecimal("5"));
         List<Item> items = new ArrayList<>();
@@ -77,8 +77,7 @@ public class ItemControllerTest {
         assertEquals(BigDecimal.valueOf(5), itemsFound.get(0).getPrice());
     }
 
-
-    public Item createItem(Long id, String name, String description, BigDecimal price){
+    public Item createItem(Long id, String name, String description, BigDecimal price) {
         Item newItem = new Item();
         newItem.setId(id);
         newItem.setName(name);

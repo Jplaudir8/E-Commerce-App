@@ -8,8 +8,10 @@ import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.ItemRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.ModifyCartRequest;
+import org.apache.http.HttpResponse;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
@@ -17,8 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -39,8 +40,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void verifyAddToCart() throws Exception {
-
+    public void verifyAddToCart() {
         Cart newCart = new Cart();
         User joanUser = createUser(1l, "Joan", "password", newCart);
         Item newItem = createItem(1L, "Fidget Spinner", new BigDecimal("2"), "Toy");
@@ -64,7 +64,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void verifyRemoveFromCart() throws Exception {
+    public void verifyRemoveFromCart() {
         Cart newCart = new Cart();
         User joanUser = createUser(1l, "Joan", "password", newCart);
         Item newItem = createItem(1L, "Fidget Spinner", new BigDecimal("2"), "Toy");
@@ -82,6 +82,65 @@ public class CartControllerTest {
 
         assertNotNull(cart);
         assertEquals(0, cart.getItems().size());
+    }
+
+    @Test
+    public void verifyUnsuccessfulAddToCartNoUser() {
+        ModifyCartRequest newCartRequest = createCartRequest(1L, 5, "Joan");
+        ArrayList<Item> listOfItems = new ArrayList<Item>();
+
+        when(userRepository.findByUsername("Joan")).thenReturn(null);
+        when(itemRepository.findById(anyLong())).thenReturn(null);
+
+        final ResponseEntity<Cart> response = cartController.addToCart(newCartRequest);
+
+        assertNotNull(response);
+        assertEquals(404, response.getStatusCodeValue());
+    }
+
+    @Test
+    public void verifyUnsuccessfulAddToCartNoItem() {
+        Cart newCart = new Cart();
+        User joanUser = createUser(1l, "Joan", "password", newCart);
+        Item newItem = createItem(1L, "Fidget Spinner", new BigDecimal("2"), "Toy");
+        ModifyCartRequest newCartRequest = createCartRequest(1L, 5, "Joan");
+        newCart = createCart(1l, null, joanUser);
+
+        when(userRepository.findByUsername("Joan")).thenReturn(joanUser);
+        when(itemRepository.findById(1L)).thenReturn(Optional.ofNullable(null));
+
+        final ResponseEntity<Cart> response = cartController.addToCart(newCartRequest);
+
+        assertNotNull(response);
+        assertEquals(404, response.getStatusCodeValue());
+    }
+
+    @Test
+    public void verifyUnsuccessfulRemoveFromCartNoUser() {
+        ModifyCartRequest newCartRequest = createCartRequest(1L, 5, "Joan");
+
+        when(userRepository.findByUsername("Joan")).thenReturn(null);
+
+        final ResponseEntity<Cart> response = cartController.removeFromCart(newCartRequest);
+
+        assertNotNull(response);
+        assertEquals(404, response.getStatusCodeValue());
+    }
+
+    @Test
+    public void verifyUnsuccessfulRemoveFromCartNoItem() {
+        Cart newCart = new Cart();
+        User joanUser = createUser(1l, "Joan", "password", newCart);
+        Item newItem = createItem(1L, "Fidget Spinner", new BigDecimal("2"), "Toy");
+        ModifyCartRequest newCartRequest = createCartRequest(1L, 5, "Joan");
+
+        when(userRepository.findByUsername("Joan")).thenReturn(joanUser);
+        when(itemRepository.findById(1L)).thenReturn(Optional.ofNullable(null));
+
+        final ResponseEntity<Cart> response = cartController.removeFromCart(newCartRequest);
+
+        assertNotNull(response);
+        assertEquals(404, response.getStatusCodeValue());
     }
 
     /**

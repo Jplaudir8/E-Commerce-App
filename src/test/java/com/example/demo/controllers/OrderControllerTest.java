@@ -5,21 +5,18 @@ import com.example.demo.model.persistence.Cart;
 import com.example.demo.model.persistence.Item;
 import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.UserOrder;
-import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.OrderRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import javax.xml.ws.Response;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -79,6 +76,20 @@ public class OrderControllerTest {
 
         List<UserOrder> orders = response.getBody();
         assertNotNull(orders);
+    }
+
+    @Test
+    public void verifyUnsuccessfulSubmit() {
+        when(userRepository.findByUsername("Joan")).thenReturn(null);
+        final ResponseEntity<UserOrder> response = orderController.submit("Joan");
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void verifyUnsuccessfulGetOrdersForUser() {
+        when(userRepository.findByUsername("Joan")).thenReturn(null);
+        final ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("Joan");
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     /**

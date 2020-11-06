@@ -128,8 +128,6 @@ public class UserControllerTest {
         assertEquals(404, response.getStatusCodeValue());
     }
 
-
-
     /**
      * Helper Method to create a UserRequest instance.
      * @param username
