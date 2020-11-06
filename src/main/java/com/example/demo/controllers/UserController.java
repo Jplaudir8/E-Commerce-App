@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import com.example.demo.model.requests.CreateUserRequest;
 @RequestMapping("/api/user")
 public class UserController {
 
-	private static Logger log = LoggerFactory.getLogger("splunk_logger");
+	private static Logger log = LoggerFactory.getLogger(UserController.class.getSimpleName());
 
 	@Autowired
 	private UserRepository userRepository;
@@ -44,9 +43,9 @@ public class UserController {
 		User user = userRepository.findByUsername(username);
 
 		if (user == null) {
-			log.info("User Controller: User does not exist");
+			log.info("User does not exist");
 		} else {
-			log.info("User Controller: Found User with username: " + username);
+			log.info("Found User with username: " + username);
 		}
 
 		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
@@ -62,10 +61,10 @@ public class UserController {
 		user.setCart(cart);
 		if (createUserRequest.getPassword().length() < 7 ||
 				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
-			log.info("User Controller: Error with user password. Cannot create user {}");
+			log.info("Error with user password. Cannot create user {}");
 			return ResponseEntity.badRequest().build();
 		}
-		log.info("User Controller: User name set with " + createUserRequest.getUsername());
+		log.info("User name set with " + createUserRequest.getUsername());
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 
 		userRepository.save(user);

@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 @RequestMapping("/api/order")
 public class OrderController {
 
-	private static Logger log = LoggerFactory.getLogger("splunk_logger");
+	private static Logger log = LoggerFactory.getLogger(OrderController.class.getSimpleName());
 
 	@Autowired
 	private UserRepository userRepository;

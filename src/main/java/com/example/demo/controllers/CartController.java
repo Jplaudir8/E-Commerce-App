@@ -25,7 +25,7 @@ import com.example.demo.model.requests.ModifyCartRequest;
 @RequestMapping("/api/cart")
 public class CartController {
 
-	private static Logger log = LoggerFactory.getLogger("splunk_logger");
+	private static Logger log = LoggerFactory.getLogger(CartController.class.getSimpleName());
 
 	@Autowired
 	private UserRepository userRepository;
@@ -40,12 +40,12 @@ public class CartController {
 	public ResponseEntity<Cart> addToCart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.info("Cart Controller: User does not exist");
+			log.info("User does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.info("Cart Controller: Item with id ["+ request.getItemId() + "] does not exist");
+			log.info("Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();
@@ -59,12 +59,12 @@ public class CartController {
 	public ResponseEntity<Cart> removeFromCart(@RequestBody ModifyCartRequest request) {
 		User user = userRepository.findByUsername(request.getUsername());
 		if(user == null) {
-			log.info("Cart Controller: User does not exist");
+			log.info("User does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Optional<Item> item = itemRepository.findById(request.getItemId());
 		if(!item.isPresent()) {
-			log.info("Cart Controller: Item with id ["+ request.getItemId() + "] does not exist");
+			log.info("Item with id ["+ request.getItemId() + "] does not exist");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		Cart cart = user.getCart();

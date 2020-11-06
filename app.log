@@ -1,44 +1,154 @@
-2020-11-05 14:15:56.316  INFO 64625 --- [main] com.example.demo.SareetaApplication      : Starting SareetaApplication on Joans-MacBook-Pro.local with PID 64625 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
-2020-11-05 14:15:56.319  INFO 64625 --- [main] com.example.demo.SareetaApplication      : No active profile set, falling back to default profiles: default
-2020-11-05 14:15:56.937  INFO 64625 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-11-05 14:15:57.012  INFO 64625 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66ms. Found 4 repository interfaces.
-2020-11-05 14:15:57.630  INFO 64625 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c47c5921] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-11-05 14:15:57.898  INFO 64625 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-11-05 14:15:57.922  INFO 64625 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-11-05 14:15:57.922  INFO 64625 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
-2020-11-05 14:15:58.014  INFO 64625 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-11-05 14:15:58.014  INFO 64625 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1624 ms
-2020-11-05 14:15:58.228  INFO 64625 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-11-05 14:15:58.374  INFO 64625 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-11-05 14:15:58.454  INFO 64625 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2020-11-06 10:12:09,837 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80269 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:12:09,842 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:12:09,843 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:12:10,975 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:12:10,975 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:12:11,056 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:12:11,223 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:12:11,339 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:12:11,384 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2020-11-05 14:15:58.534  INFO 64625 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
-2020-11-05 14:15:58.535  INFO 64625 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2020-11-05 14:15:58.680  INFO 64625 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2020-11-05 14:15:58.842  INFO 64625 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2020-11-05 14:15:59.564  INFO 64625 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-11-05 14:16:00.382  WARN 64625 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-11-05 14:16:00.480  INFO 64625 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c573229, org.springframework.security.web.context.SecurityContextPersistenceFilter@505f45cc, org.springframework.security.web.header.HeaderWriterFilter@34f23816, org.springframework.web.filter.CorsFilter@77ecdc2b, org.springframework.security.web.authentication.logout.LogoutFilter@171aa66, com.example.demo.security.JWTAuthenticationFilter@714f1a44, com.example.demo.security.JWTAuthenticationVerificationFilter@3c09a350, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5df92089, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12e007be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@592a1882, org.springframework.security.web.session.SessionManagementFilter@12f9f896, org.springframework.security.web.access.ExceptionTranslationFilter@15ac02d5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7de5871d]
-2020-11-05 14:16:00.649  INFO 64625 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-11-05 14:16:00.930  INFO 64625 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-11-05 14:16:00.934  INFO 64625 --- [main] com.example.demo.SareetaApplication      : Started SareetaApplication in 5.115 seconds (JVM running for 5.54)
-2020-11-05 14:16:16.757  INFO 64625 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-11-05 14:16:16.757  INFO 64625 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-11-05 14:16:16.765  INFO 64625 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
-2020-11-05 14:16:16.928 ERROR 64625 --- [http-nio-8080-exec-2] c.e.demo.controllers.UserController      : User Controller: Error with user password. Cannot create user {}
-2020-11-05 14:16:24.831 ERROR 64625 --- [http-nio-8080-exec-4] c.e.demo.controllers.UserController      : User Controller: Error with user password. Cannot create user {}
-2020-11-05 14:16:37.965  INFO 64625 --- [http-nio-8080-exec-6] c.e.demo.controllers.UserController      : User Controller: User name set with Joan
-2020-11-05 14:16:49.066  INFO 64625 --- [http-nio-8080-exec-7] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
-2020-11-05 14:18:06.635  INFO 64625 --- [http-nio-8080-exec-9] c.e.demo.controllers.UserController      : User Controller: Found User with username: Joan
-2020-11-05 14:18:25.783 ERROR 64625 --- [http-nio-8080-exec-10] c.e.demo.controllers.UserController      : User Controller: User does not exist
-2020-11-05 14:19:23.094 ERROR 64625 --- [http-nio-8080-exec-2] c.e.demo.controllers.UserController      : Cart Controller: User does not exist
-2020-11-05 14:20:18.600 ERROR 64625 --- [http-nio-8080-exec-4] c.e.demo.controllers.UserController      : Item with id [9] does not exist
-2020-11-05 14:20:29.008 ERROR 64625 --- [http-nio-8080-exec-5] c.e.demo.controllers.UserController      : Item with id [7] does not exist
-2020-11-05 14:20:33.745 ERROR 64625 --- [http-nio-8080-exec-6] c.e.demo.controllers.UserController      : Item with id [4] does not exist
-2020-11-05 14:21:31.178 ERROR 64625 --- [http-nio-8080-exec-7] c.e.demo.controllers.UserController      : Cart Controller: User does not exist
-2020-11-05 14:21:50.163 ERROR 64625 --- [http-nio-8080-exec-8] c.e.demo.controllers.UserController      : Item with id [10] does not exist
-2020-11-05 14:22:23.362  INFO 64625 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-11-05 14:22:23.364  INFO 64625 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-11-05 14:22:23.371  INFO 64625 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-11-05 14:22:23.374  INFO 64625 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-06 10:12:11,435 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:12:11,436 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:12:11,537 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:12:11,640 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:12:13,323 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.773 seconds (JVM running for 4.089)
+2020-11-06 10:12:34,680 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 10:12:34,818 INFO splunk_logger [http-nio-8080-exec-2] User Controller: User name set with Joan
+2020-11-06 10:13:32,155 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:13:32,156 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:13:35,683 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80336 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:13:35,686 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:13:35,686 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:13:36,780 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:13:36,780 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:13:36,873 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:13:37,060 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:13:37,187 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:13:37,232 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:13:37,282 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:13:37,283 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:13:37,388 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:13:37,498 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:13:39,083 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.921 seconds (JVM running for 4.242)
+2020-11-06 10:13:49,042 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:13:49,043 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:13:51,455 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80352 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:13:51,457 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:13:51,458 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:13:52,556 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:13:52,556 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:13:52,636 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:13:52,799 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:13:52,914 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:13:52,957 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:13:53,005 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:13:53,006 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:13:53,105 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:13:53,208 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:13:54,766 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.617 seconds (JVM running for 3.95)
+2020-11-06 10:14:02,925 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 10:14:03,056 INFO com.example.demo.controllers.UserController [http-nio-8080-exec-2] User Controller: User name set with Joan
+2020-11-06 10:14:22,266 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:14:22,268 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:14:24,715 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80375 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:14:24,717 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:14:24,717 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:14:25,977 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:14:25,978 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:14:26,059 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:14:26,221 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:14:26,335 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:14:26,378 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:14:26,428 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:14:26,429 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:14:26,533 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:14:26,634 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:14:28,330 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.92 seconds (JVM running for 4.242)
+2020-11-06 10:14:43,150 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 10:14:43,264 INFO UserController [http-nio-8080-exec-2] User Controller: User name set with Joan
+2020-11-06 10:15:20,846 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:15:20,848 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:15:23,357 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80407 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:15:23,358 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:15:23,359 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:15:24,472 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:15:24,472 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:15:24,559 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:15:24,732 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:15:24,848 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:15:24,894 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:15:24,947 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:15:24,948 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:15:25,048 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:15:25,157 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:15:26,837 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.773 seconds (JVM running for 4.089)
+2020-11-06 10:15:30,752 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 10:15:30,874 INFO UserController [http-nio-8080-exec-1] User Controller: User name set with Joan
+2020-11-06 10:16:31,033 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:16:31,035 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:16:33,699 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80437 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:16:33,701 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:16:33,702 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:16:34,791 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:16:34,792 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:16:34,882 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:16:35,050 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:16:35,166 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:16:35,207 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:16:35,254 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:16:35,255 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:16:35,353 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:16:35,452 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:16:37,098 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.889 seconds (JVM running for 4.207)
+2020-11-06 10:16:47,636 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-06 10:16:47,757 INFO UserController [http-nio-8080-exec-2] User name set with Joan
+2020-11-06 10:17:29,946 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:17:29,947 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:23:11,259 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 80632 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:23:11,261 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:23:11,261 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:23:12,350 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:23:12,350 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:23:12,435 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:23:12,604 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:23:12,725 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:23:12,770 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:23:12,824 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:23:12,825 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:23:12,934 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:23:13,041 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:23:14,640 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 3.791 seconds (JVM running for 4.105)
+2020-11-06 10:46:58,685 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:46:58,687 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2020-11-06 10:47:01,716 INFO com.example.demo.SareetaApplication [main] Starting SareetaApplication on Joans-MacBook-Pro.local with PID 81175 (started by joanperezlozano in /Users/joanperezlozano/Documents/Local Github Repositories/E-Commerce Application)
+2020-11-06 10:47:01,719 DEBUG com.example.demo.SareetaApplication [main] Running with Spring Boot v2.1.5.RELEASE, Spring v5.1.7.RELEASE
+2020-11-06 10:47:01,719 INFO com.example.demo.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2020-11-06 10:47:02,859 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2020-11-06 10:47:02,859 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-11-06 10:47:02,953 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2020-11-06 10:47:03,153 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-11-06 10:47:03,305 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-11-06 10:47:03,355 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-11-06 10:47:03,408 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2020-11-06 10:47:03,409 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2020-11-06 10:47:03,519 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-11-06 10:47:03,637 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-06 10:47:05,409 INFO com.example.demo.SareetaApplication [main] Started SareetaApplication in 4.217 seconds (JVM running for 4.531)
+2020-11-06 10:47:08,351 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2020-11-06 10:47:08,352 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
