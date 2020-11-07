@@ -37,6 +37,8 @@ public class OrderController {
 		if(user == null) {
 			log.info("Error with finding User. Cannot find user {}");
 			return ResponseEntity.notFound().build();
+		} else {
+			log.info("Successfully submitted order for user: " + user.getUsername());
 		}
 		UserOrder order = UserOrder.createFromCart(user.getCart());
 		orderRepository.save(order);
@@ -49,6 +51,8 @@ public class OrderController {
 		if(user == null) {
 			log.info("Error with finding User History {}");
 			return ResponseEntity.notFound().build();
+		} else {
+			log.info("Successfully found User History for user: " + user.getUsername());
 		}
 		return ResponseEntity.ok(orderRepository.findByUser(user));
 	}
